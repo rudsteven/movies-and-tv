@@ -4,6 +4,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="Styles/styles.css">
+   <link rel="stylesheet" type="text/css" href="Styles/gallerystyle2.css">
    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
    <script src="script.js"></script>
    <title>Stream Movies and TV Shows</title>
@@ -19,7 +20,8 @@
 </div>  
      &nbsp;
 <h1 style="text-align:center;color:blue">Movies</h1>
-    <p><center>
+<p>
+  <div class="movie-list">
 
     
 <?php
@@ -38,10 +40,16 @@ foreach ($movielist as $movie) {
     $title =$movie["movie_name"];
     $posterurl =$movie["movie_poster"];
     $filename = $movie["file_name"];
+    $resolution = $movie["resolution"];
     $filepath = "E:Video\Movies\\";
 
-    echo "<a href='", $filepath, $filename, "'><img src='", $posterurl,"' class='movie-img'
-      alt='", $title,"'></a>";
+    echo "<div class='movie'>
+            <div class='res_label'>".$resolution."</div>
+            <div class='title'>".$title."</div>
+              <a href='". $filepath. $filename. "'>
+                <img src='". $posterurl."' class='movie-img' alt='". $title."'>
+              </a>
+          </div>";
     /*
     echo "<a href='E:\Video\Movies\ $filename'" ,
      "<img src='", $posterurl,"' class='movie-img'
@@ -78,6 +86,6 @@ foreach ($moviedb->listDatabases() as $db) {
  */
 ?>
 
-
+</div>
 </body>
 <html>
